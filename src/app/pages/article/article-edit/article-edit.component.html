@@ -1,0 +1,66 @@
+<nz-layout>
+  <nz-header>
+    <nz-page-header nzBackIcon class="site-page-header">
+      <nz-page-header-title> Edit article</nz-page-header-title>
+    </nz-page-header>
+  </nz-header>
+  <nz-content>
+    <form nz-form [formGroup]="validateForm" style="width: 100%;">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>articleTitle</nz-form-label>
+        <nz-form-control [nzSpan]="18">
+          <input nz-input formControlName="articleTitle" placeholder="async validate try to write articleTitle"
+            required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>articleContent</nz-form-label>
+        <nz-form-control [nzSpan]="18">
+          <textarea formControlName="articleContent" nz-input placeholder="Please write something here!"
+            [nzAutosize]="{ minRows: 12, maxRows: 20 }"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-list nzGrid>
+          <div nz-row [nzGutter]="16" nzAlign="bottom" nzJustify="center">
+            <div nz-col [nzSpan]="6" *ngFor="let item of validateForm.value.images">
+              <nz-list-item>
+                <img [src]="item.imagePath" style="width: 100%;">
+              </nz-list-item>
+            </div>
+          </div>
+        </nz-list>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button (click)="showImageModal()">Add image</button>
+          <button nz-button (click)="resetForm()">Reset</button>
+          <button nz-button nzType="primary" [disabled]="!validateForm.valid"
+            (click)="submitForm(validateForm.value)">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-content>
+</nz-layout>
+<!-- <app-article-edit-imageSelectMadol [isVisible]="isVisible" [currentImageList]="currentImageList" (closeModal)="handleCancel()"></app-article-edit-imageSelectMadol> -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Select Pictures" (nzOnCancel)="handleModalCancel()">
+  <div>
+    <nz-list nzGrid>
+      <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="onChange($event)">
+        <div nz-row [nzGutter]="16" nzAlign="bottom">
+          <div nz-col [nzSpan]="6" *ngFor="let item of currentImageList">
+            <nz-list-item>
+              <label nz-checkbox [nzValue]="item.imagePath" [(ngModel)]="item.select"
+                [nzDisabled]="!(isSelect||item.select)"></label>
+              <img [src]="item.imagePath" [alt]="item.imageName" style="width: 100%;">
+            </nz-list-item>
+          </div>
+        </div>
+      </nz-checkbox-wrapper>
+    </nz-list>
+  </div>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleModalCancel()">Callback</button>
+    <button nz-button nzType="primary" (click)="handleModalOk()">HandleOk</button>
+  </div>
+</nz-modal>

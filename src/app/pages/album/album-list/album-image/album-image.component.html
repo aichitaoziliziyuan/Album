@@ -1,0 +1,8 @@
+<div class="father">
+  <img [src]="image.imagePath" [alt]="image.imageName" width="100%">
+  <div class="son">
+    <app-album-list-action [image]="image" (showEdit)="editImage($event)"></app-album-list-action>
+  </div>
+</div>
+<app-album-list-modal  [isShowModal]="visibleModal"  [imageForm]="imageForm" (colse)="handleCancel()">
+</app-album-list-modal>

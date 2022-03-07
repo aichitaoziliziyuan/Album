@@ -1,0 +1,11 @@
+<nz-list nzGrid *ngIf="layout =='image'">
+  <div nz-row [nzGutter]="16" nzAlign="bottom">
+    <div nz-col [nzSpan]="4" *ngFor="let item of imageList">
+      <nz-list-item>
+        <app-album-image [image]="item"></app-album-image>
+      </nz-list-item>
+    </div>
+  </div>
+</nz-list>
+
+<app-album-info [image]="imageList" *ngIf="layout =='info'"></app-album-info>

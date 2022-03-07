@@ -1,0 +1,31 @@
+<nz-modal [nzVisible]="isShowModal" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="onCancel()">
+  <ng-template #modalContent>
+    <img [src]="imageForm.imagePath" [ngStyle]="{ width: '100%' }" />
+    <form nz-form #form="ngForm">
+      <nz-form-item>
+        <nz-input-group>
+          <input type="text" nz-input name="imageName" placeholder="ImageName" [(ngModel)]="imageForm.imageName"
+            required />
+        </nz-input-group>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please select your type!">
+          <nz-select id="type" name="type" nzPlaceHolder="Select a option and change input text above"
+            [(ngModel)]="imageForm.type">
+            <nz-option nzValue="scenery" nzLabel="scenery"></nz-option>
+            <nz-option nzValue="character" nzLabel="character"></nz-option>
+            <nz-option nzValue="wallpaper" nzLabel="wallpaper"></nz-option>
+            <nz-option nzValue="comic" nzLabel="comic"></nz-option>
+            <nz-option nzValue="other" nzLabel="other"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control style="text-align: center;">
+          <button nz-button nzType="primary" (click)="onCancel()" style="margin-right: 10px;">Back</button>
+          <button nz-button nzType="primary" [disabled]="!form.valid" (click)="submitForm(form.value)">Save</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+</nz-modal>

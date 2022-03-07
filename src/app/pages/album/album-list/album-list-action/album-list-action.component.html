@@ -1,0 +1,6 @@
+<div nz-row nzJustify="space-around">
+  <div nz-col nzSpan="4"><i nz-icon nzType="edit" nzTheme="twotone" (click)="editImage()"></i></div>
+  <div nz-col nzSpan="4"><i nz-icon nzType="heart" [nzTheme]="image.like?'fill':'twotone'" style="color: red;"
+      (click)="isLike()"></i></div>
+  <div nz-col nzSpan="4"><i nz-icon nzType="delete" nzTheme="twotone" (click)="delImage()"></i></div>
+</div>

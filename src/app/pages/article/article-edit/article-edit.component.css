@@ -1,0 +1,28 @@
+nz-header {
+  background: #fff;
+  padding: 0;
+  height: 70px;
+}
+nz-layout{
+  background: #fff;
+}
+[nz-form] {
+  max-width: 1000px;
+}
+
+button {
+  margin-left: 8px;
+}
+
+nz-content {
+  overflow: initial;
+  background: #fff;
+  margin: 20px 10%;
+
+}
+input{
+  width: 90%;
+}
+textarea{
+  width: 90%;
+}

@@ -1,0 +1,32 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Ant Design Of Angular</h1>
+      </a>
+    </div> nz-submenu
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzOpen routerLink="/album/all">
+        <i nz-icon nzType="picture" nzTheme="outline"></i>
+        <span>Album</span>
+      </li>
+      <li nz-menu-item nzOpen routerLink="/article/article-management">
+        <i nz-icon nzType="edit" nzTheme="outline"></i>
+        <span>Article</span>
+      </li>
+    </ul>
+    <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+      <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+    </span>
+  </nz-sider>
+  <nz-layout>
+
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

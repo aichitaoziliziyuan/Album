@@ -1,0 +1,23 @@
+<nz-table #basicTable [nzData]="image" >
+  <thead>
+    <tr>
+      <th nzWidth="15%" nzAlign=center>image</th>
+      <th nzAlign=center>imageName</th>
+      <th nzAlign=center>type</th>
+      <th nzAlign=center>date</th>
+      <th nzAlign=center>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td><img [src]="data.imagePath" [alt]="data.imageName" width="100%"></td>
+      <td style="text-align: center;">{{ data.imageName }}</td>
+      <td style="text-align: center;">{{ data.type }}</td>
+      <td style="text-align: center;"> 2022/2/28</td>
+      <td>
+        <app-album-list-action [image]="data" (showEdit)="editImage($event)"></app-album-list-action>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<app-album-list-modal [isShowModal]="visibleModal" [imageForm]="imageForm" (colse)="handleCancel()"></app-album-list-modal>

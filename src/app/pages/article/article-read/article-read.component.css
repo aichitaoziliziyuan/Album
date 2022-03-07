@@ -1,0 +1,24 @@
+.content {
+  min-height: 66px;
+  display: -webkit-box;
+  /**对象作为伸缩盒子模型展示**/
+  -webkit-box-orient: vertical;
+  /**设置或检索伸缩盒子对象的子元素的排列方式**/
+  margin: 10px 10% 50px 10%;
+  font-size: 18px;
+  line-height: 30px;
+  /* 换行 */
+  white-space:pre-wrap;
+  text-indent:36px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+  height: 70px;
+}
+
+nz-content {
+  overflow: initial;
+  background: #fff;
+}

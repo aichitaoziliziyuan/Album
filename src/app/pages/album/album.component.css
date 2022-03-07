@@ -1,0 +1,49 @@
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+
+.layout {
+  min-height: 100vh;
+}
+
+nz-sider {
+  overflow: auto;
+  height: 100%;
+  position: fixed;
+  left: 0;
+}
+
+.right-layout {
+  margin-left: 200px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+  height: 130px;
+}
+
+nz-content {
+  overflow: initial;
+}
+
+.inner-content {
+  background: #fff;
+}
+
+nz-footer {
+  text-align: center;
+}
+.ant-page-header-footer {
+  margin-top: 0px;
+}
+.imgBox{
+  width: 100%;
+  text-align: center;
+}
+.showImage{
+  box-sizing: border-box;
+  width:250px;
+}

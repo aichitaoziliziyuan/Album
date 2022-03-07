@@ -1,0 +1,44 @@
+<nz-layout>
+  <nz-header>
+    <nz-page-header nzBackIcon class="site-page-header">
+      <nz-page-header-title>Article Read</nz-page-header-title>
+
+    </nz-page-header>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content">
+      <nz-list nzItemLayout="vertical">
+
+        <nz-list-item-meta>
+          <nz-list-item-meta-title >
+            <h2 style="margin-left: 7%;">{{article.articleTitle}}</h2>
+          </nz-list-item-meta-title>
+
+        </nz-list-item-meta>
+        <div class="content">
+
+          {{article.articleContent}}
+          <nz-list nzGrid style="margin-top: 100px;">
+            <div nz-row [nzGutter]="16" [nzJustify]="'center'" nzAlign="bottom">
+              <div nz-col [nzSpan]="6" *ngFor="let item of article.images">
+                <nz-list-item>
+                  <img [src]="item.imagePath" style="width: 100%;">
+                </nz-list-item>
+              </div>
+            </div>
+          </nz-list>
+        </div>
+        <ul nz-list-item-actions style=" float: right;">
+          <nz-list-item-action>
+            <i nz-icon nzType="field-time" nzTheme="outline" style="margin-right: 8px;"></i>
+            2022/3/1
+          </nz-list-item-action>
+          <nz-list-item-action>
+            <i nz-icon nzType="edit" style="margin-right: 8px;"></i>
+            <a style=" cursor: pointer;" [routerLink]="['edit']">edit</a>
+          </nz-list-item-action>
+        </ul>
+      </nz-list>
+    </div>
+  </nz-content>
+</nz-layout>

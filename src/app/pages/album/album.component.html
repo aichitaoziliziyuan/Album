@@ -1,0 +1,88 @@
+<nz-layout>
+  <nz-header>
+    <nz-page-header class="site-page-header">
+      <nz-page-header-title>Album</nz-page-header-title>
+      <nz-page-header-extra>
+        <button nz-button nzType="primary" nzShape="circle" (click)="showModal()">
+          <i nz-icon nzType="plus" style="font-size: 20px;"></i>
+        </button>
+      </nz-page-header-extra>
+      <nz-page-header-footer>
+        <div nz-row>
+          <div nz-col nzSpan="18">
+            <ul nz-menu nzMode="horizontal" style="font-size: 16px;">
+              <li nz-menu-item nzMatchRouter style="margin-left: 5px;">
+                <a [routerLink]="['all']">All</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a [routerLink]="['like']">Like</a>
+              </li>
+            </ul>
+          </div>
+          <div nz-col nzSpan="3" nzOffset="3"> <a nz-dropdown [nzDropdownMenu]="menu">
+              Change layout
+              <i nz-icon nzType="down"></i>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item (click)="changeLayout('image')">Show image</li>
+                <li nz-menu-item (click)="changeLayout('info')">Show image info</li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
+        </div>
+      </nz-page-header-footer>
+    </nz-page-header>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+</nz-layout>
+<!-- 添加图片modal -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add image" (nzOnCancel)="handleCancel()" [nzFooter]="modalFooter"
+  style="text-align: center;">
+  <form nz-form [formGroup]="imageForm">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="imageName">ImageName</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid imageName">
+        <input nz-input id="imageName" formControlName="imageName" #imageName />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type" nzRequired>Type</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please select your type!">
+        <nz-select id="type" formControlName="type" nzPlaceHolder="Select a option and change input text above">
+          <nz-option nzValue="scenery" nzLabel="scenery"></nz-option>
+          <nz-option nzValue="character" nzLabel="character"></nz-option>
+          <nz-option nzValue="wallpaper" nzLabel="wallpaper"></nz-option>
+          <nz-option nzValue="comic" nzLabel="comic"></nz-option>
+          <nz-option nzValue="other" nzLabel="other"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="imagePath">Image Path</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid imagePath">
+        <input nz-input id="imagePath" formControlName="imagePath" #imagePath />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzSpan]="16" [nzOffset]="8">
+        <label nz-checkbox formControlName="like">
+          Select it if you like
+        </label>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div class="imgBox" *ngIf="imagePath.value">
+    <img [src]="imagePath.value" [alt]="imageName.value" class="showImage">
+  </div>
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Callback</button>
+    <button nz-button nzType="primary" (click)="handleAdd(imageForm.value)"
+      [disabled]="!imageForm.valid">Submit</button>
+  </ng-template>
+</nz-modal>

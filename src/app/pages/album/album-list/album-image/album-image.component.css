@@ -1,0 +1,25 @@
+.father {
+  position: relative;
+}
+
+.father:hover .son {
+  display: block;
+}
+
+.son {
+  background-color: rgba(157, 153, 167, 0.5);
+  height: 28px;
+  width: 100%;
+  display: none;
+  position: absolute;
+  bottom: 35%;
+}
+
+.son [nz-icon] {
+  font-size: 26px;
+}
+
+[nz-form] {
+  max-width: 300px;
+  margin: 10px auto;
+}

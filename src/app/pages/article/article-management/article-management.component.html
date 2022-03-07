@@ -1,0 +1,57 @@
+<nz-layout>
+  <nz-header>
+    <nz-page-header class="site-page-header">
+      <nz-page-header-title>Article</nz-page-header-title>
+      <nz-page-header-extra>
+        <button nz-button nzType="primary" nzShape="circle" routerLink="../article-edit">
+          <i nz-icon nzType="edit" style="font-size: 20px;margin-bottom: 6px;"></i>
+        </button>
+      </nz-page-header-extra>
+    </nz-page-header>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content">
+      <nz-list nzItemLayout="vertical">
+        <nz-list-item *ngFor="let item of articles">
+          <nz-list-item-meta>
+            <nz-list-item-meta-title>
+              <a [routerLink]="['../'+item.id]">{{ item.articleTitle }}</a>
+            </nz-list-item-meta-title>
+          </nz-list-item-meta>
+          <div class="content">
+            {{item.articleContent}}
+          </div>
+          <ul nz-list-item-actions style=" float: right;">
+            <nz-list-item-action>
+              <i nz-icon nzType="field-time" nzTheme="outline" style="margin-right: 8px;"></i>
+              2022/3/1
+            </nz-list-item-action>
+            <nz-list-item-action>
+              <i nz-icon nzType="edit" style="margin-right: 8px;"></i>
+              <a style=" cursor: pointer;" [routerLink]="['../', item.id, 'edit']">edit</a>
+            </nz-list-item-action>
+            <nz-list-item-action>
+              <i nz-icon nzType="delete" style="margin-right: 8px;"></i>
+              <a style=" cursor: pointer;" (click)="delArticle(item.id)">delete</a>
+            </nz-list-item-action>
+          </ul>
+          <nz-list-item-extra>
+            <!-- <div *ngFor="let image of item.images">
+              <img width="100" alt="logo" [src]="image.imagePath" />
+            </div> -->
+            <!-- <img  width="136" [src]="item.images[0].imagePath" alt="">
+            <img  width="136" [src]="item.images[0].imagePath" alt=""> -->
+            <div class="gutter-example">
+              <div nz-row [nzGutter]="[hGutter,vGutter]" style="width: 272px" nzAlign="top">
+                <div nz-col class="gutter-row" [nzSpan]="item.images|imageLayout" *ngFor="let image of item.images">
+                  <div class="grid-config">
+                    <img [src]="image.imagePath" alt="" width="100%"></div>
+                </div>
+              </div>
+            </div>
+          </nz-list-item-extra>
+        </nz-list-item>
+      </nz-list>
+    </div>
+  </nz-content>
+</nz-layout>
